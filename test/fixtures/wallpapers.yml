@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  series: MyString
+  creator: MyString
+  source: 
+  thumbnail_path: MyString
+  sample_path: 
+
+two:
+  title: MyString
+  series: MyString
+  creator: MyString
+  source: 
+  thumbnail_path: MyString
+  sample_path: 

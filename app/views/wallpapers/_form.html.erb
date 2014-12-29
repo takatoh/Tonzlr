@@ -1,0 +1,41 @@
+<%= form_for(@wallpaper) do |f| %>
+  <% if @wallpaper.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wallpaper.errors.count, "error") %> prohibited this wallpaper from being saved:</h2>
+
+      <ul>
+      <% @wallpaper.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :series %><br>
+    <%= f.text_field :series %>
+  </div>
+  <div class="field">
+    <%= f.label :creator %><br>
+    <%= f.text_field :creator %>
+  </div>
+  <div class="field">
+    <%= f.label :source %><br>
+    <%= f.text_field :source %>
+  </div>
+  <div class="field">
+    <%= f.label :thumbnail_path %><br>
+    <%= f.text_field :thumbnail_path %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_path %><br>
+    <%= f.text_field :sample_path %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

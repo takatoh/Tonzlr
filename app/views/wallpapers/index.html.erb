@@ -1,0 +1,35 @@
+<h1>Listing wallpapers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Series</th>
+      <th>Creator</th>
+      <th>Source</th>
+      <th>Thumbnail path</th>
+      <th>Sample path</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @wallpapers.each do |wallpaper| %>
+      <tr>
+        <td><%= wallpaper.title %></td>
+        <td><%= wallpaper.series %></td>
+        <td><%= wallpaper.creator %></td>
+        <td><%= wallpaper.source %></td>
+        <td><%= wallpaper.thumbnail_path %></td>
+        <td><%= wallpaper.sample_path %></td>
+        <td><%= link_to 'Show', wallpaper %></td>
+        <td><%= link_to 'Edit', edit_wallpaper_path(wallpaper) %></td>
+        <td><%= link_to 'Destroy', wallpaper, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wallpaper', new_wallpaper_path %>

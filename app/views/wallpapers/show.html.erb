@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @wallpaper.title %>
+</p>
+
+<p>
+  <strong>Series:</strong>
+  <%= @wallpaper.series %>
+</p>
+
+<p>
+  <strong>Creator:</strong>
+  <%= @wallpaper.creator %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @wallpaper.source %>
+</p>
+
+<p>
+  <strong>Thumbnail path:</strong>
+  <%= @wallpaper.thumbnail_path %>
+</p>
+
+<p>
+  <strong>Sample path:</strong>
+  <%= @wallpaper.sample_path %>
+</p>
+
+<%= link_to 'Edit', edit_wallpaper_path(@wallpaper) %> |
+<%= link_to 'Back', wallpapers_path %>
