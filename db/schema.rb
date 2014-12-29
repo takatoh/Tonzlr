@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229035713) do
+ActiveRecord::Schema.define(version: 20141229040752) do
+
+  create_table "images", force: true do |t|
+    t.integer  "wallpaper_id"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "wallpapers", force: true do |t|
     t.string   "title"
