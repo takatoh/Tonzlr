@@ -4,9 +4,9 @@ class CreateWallpapers < ActiveRecord::Migration
       t.string :title
       t.string :series
       t.string :creator
-      t.stirng :source
+      t.string :source
       t.string :thumbnail_path
-      t.stirng :sample_path
+      t.string :sample_path
 
       t.timestamps
     end
