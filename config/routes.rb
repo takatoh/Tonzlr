@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :images
+
   resources :wallpapers
 
   # The priority is based upon order of creation: first created -> highest priority.
