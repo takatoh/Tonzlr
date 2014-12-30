@@ -19,6 +19,11 @@ class Image < ActiveRecord::Base
     @filename
   end
 
+  def size_string
+    "#{width.to_s}x#{height.to_s}"
+  end
+
+
   before_create do |row|
     storage = WallpaperStorage.new("./storage")
     f = row.file

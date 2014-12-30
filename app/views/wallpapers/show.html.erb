@@ -30,5 +30,15 @@
   <%= @wallpaper.sample_path %>
 </p>
 
+<p>
+  <strong>Images:</strong>
+  <ul>
+    <% @wallpaper.images.each do |img| %>
+    <li><%= img.path %> (<%= img.size_string %>)</li>
+    <% end %>
+  </ul>
+</p>
+
+
 <%= link_to 'Edit', edit_wallpaper_path(@wallpaper) %> |
 <%= link_to 'Back', wallpapers_path %>
