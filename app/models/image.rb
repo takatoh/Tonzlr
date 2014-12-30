@@ -22,10 +22,8 @@ class Image < ActiveRecord::Base
   before_create do |row|
     storage = WallpaperStorage.new("./storage")
     f = row.file
-    if row[:width].blank?
-      row[:width] = `identify -format %[width] #{f}`.to_i
-      row[:height] = `identify -format %[height] #{f}`.to_i
-    end
+    row[:width] = `identify -format %[width] #{f.path}`.to_i
+    row[:height] = `identify -format %[height] #{f.path}`.to_i
     row[:path] = storage.store_wallpaper(row.wallpaper_id, f, row.filename)
   end
 
