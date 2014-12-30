@@ -25,6 +25,8 @@ class WallpapersController < ApplicationController
   # POST /wallpapers.json
   def create
     @wallpaper = Wallpaper.new(wallpaper_params)
+    @wallpaper.file = params["wallpaper"]["file"]
+    @wallpaper.filename = params["wallpaper"]["file"].original_filename
 
     respond_to do |format|
       if @wallpaper.save

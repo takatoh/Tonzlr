@@ -16,7 +16,7 @@ class WallpaperStorage
   def store_wallpaper(wp_id, file, file_name)
     wp_path = @storage_dir + @@file_dir + wp_id.to_s + file_name
     FileUtils.mkdir_p(wp_path.parent)
-    FileUtils.cp(file, wp_path)
+    FileUtils.cp(file.path, wp_path)
     wp_path.to_s
   end
 
