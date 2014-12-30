@@ -16,3 +16,7 @@
 /tmp
 
 *.yml
+
+/storage-devel
+/storage-test
+/storage
