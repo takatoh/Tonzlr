@@ -1,0 +1,7 @@
+---
+development:
+  storage_dir: ./storage-devel
+test:
+  storage_dir: ./storage-test
+production:
+  storage_dir: ./storage
