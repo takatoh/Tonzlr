@@ -7,11 +7,19 @@ class WallpaperStorage
   @@file_dir = "files"
   @@sample_dir = "samples"
   @@thumbnail_dir = "thumbs"
+  @@sample_size = "800x800"
+  @@thumbnail_size = "150x150"
   @@format = "jpg"
 
 
   def initialize(storage_dir)
     @storage_dir = Pathname.new(storage_dir)
+    unless (@storage_dir + @@sample_dir).exist?
+      FileUtils.mkdir_p(@storage_dir + @@sample_dir)
+    end
+    unless (@storage_dir + @@thumbnail_dir).exist?
+      FileUtils.mkdir_p(@storage_dir + @@thumbnail_dir)
+    end
   end
 
   def store_wallpaper(wp_id, file, file_name)
@@ -25,6 +33,8 @@ class WallpaperStorage
     wp_path = @storage_dir + @@file_dir + wp_id.to_s + filename
     sample_path = @storage_dir + @@sample_dir + "#{wp_id.to_s}.#{@@format}"
     thumbnail_path = @storage_dir + @@thumbnail_dir + "#{wp_id.to_s}.#{@@format}"
+    system("convert -scale #{@@sample_size} #{wp_path} #{sample_path}")
+    system("convert -scale #{@@thumbnail_size} #{wp_path} #{thumbnail_path}")
     [sample_path.relative_path_from(@storage_dir).to_s,
      thumbnail_path.relative_path_from(@storage_dir).to_s]
   end
