@@ -39,4 +39,16 @@ class WallpaperStorage
      thumbnail_path.relative_path_from(@storage_dir).to_s]
   end
 
+  def delete_image(path)
+    path = @storage_dir + path
+    FileUtils.rm(path)
+  end
+
+  def delete_sample_and_thumbnail(wp_id)
+    sample_path = @storage_dir + @@sample_dir + "#{wp_id.to_s}.#{@@format}"
+    thumbnail_path = @storage_dir + @@thumbnail_dir + "#{wp_id.to_s}.#{@@format}"
+    FileUtils.rm(sample_path)
+    FileUtils.rm(thumbnail_path)
+  end
+
 end   # of WallpaperStorage

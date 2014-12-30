@@ -34,4 +34,9 @@ class Wallpaper < ActiveRecord::Base
     wp.update_attributes(thumbnail_path: thumbnail_path)
   end
 
+  after_destroy do |wp|
+    storage = WallpaperStorage.new("./storage")
+    storage.delete_sample_and_thumbnail(wp.id)
+  end
+
 end

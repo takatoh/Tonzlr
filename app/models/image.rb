@@ -32,5 +32,9 @@ class Image < ActiveRecord::Base
     row[:path] = storage.store_wallpaper(row.wallpaper_id, f, row.filename)
   end
 
+  after_destroy do |img|
+    storage = WallpaperStorage.new("./storage")
+    storage.delete_image(img.path)
+  end
 
 end
