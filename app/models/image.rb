@@ -1,6 +1,6 @@
 class Image < ActiveRecord::Base
 
-  belongs_to :wallpaper
+  belongs_to :wallpaper, :counter_cache => true
 
 
   def file=(file)
