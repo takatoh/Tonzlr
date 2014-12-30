@@ -25,7 +25,7 @@ class Image < ActiveRecord::Base
 
 
   before_create do |row|
-    storage = WallpaperStorage.new("./storage")
+    storage = WallpaperStorage.new(SITE_CONFIG["storage_dir"])
     f = row.file
     row[:width] = `identify -format %[width] #{f.path}`.to_i
     row[:height] = `identify -format %[height] #{f.path}`.to_i
@@ -33,7 +33,7 @@ class Image < ActiveRecord::Base
   end
 
   after_destroy do |img|
-    storage = WallpaperStorage.new("./storage")
+    storage = WallpaperStorage.new(SITE_CONFIG["storage_dir"])
     storage.delete_image(img.path)
   end
 

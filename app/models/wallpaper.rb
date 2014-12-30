@@ -28,14 +28,14 @@ class Wallpaper < ActiveRecord::Base
   end
 
   after_create do |wp|
-    storage = WallpaperStorage.new("./storage")
+    storage = WallpaperStorage.new(SITE_CONFIG["storage_dir"])
     sample_path, thumbnail_path = storage.make_sample_and_thumbnail(wp.id, wp.filename)
     wp.update_attributes(sample_path: sample_path)
     wp.update_attributes(thumbnail_path: thumbnail_path)
   end
 
   after_destroy do |wp|
-    storage = WallpaperStorage.new("./storage")
+    storage = WallpaperStorage.new(SITE_CONFIG["storage_dir"])
     storage.delete_sample_and_thumbnail(wp.id)
   end
 
