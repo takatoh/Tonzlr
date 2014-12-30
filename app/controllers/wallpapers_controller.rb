@@ -1,5 +1,5 @@
 class WallpapersController < ApplicationController
-  before_action :set_wallpaper, only: [:show, :edit, :update, :destroy]
+  before_action :set_wallpaper, only: [:show, :edit, :update, :destroy, :sample, :thumbnail]
 
   # GET /wallpapers
   # GET /wallpapers.json
@@ -62,6 +62,18 @@ class WallpapersController < ApplicationController
       format.html { redirect_to wallpapers_url, notice: 'Wallpaper was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  # GET /wallpaper/sample/1
+  def sample
+    sample_path = "#{SITE_CONFIG['storage_dir']}/#{@wallpaper.sample_path}"
+    send_file sample_path
+  end
+
+  # GET /wallpaper/thumbnail/1
+  def thumbnail
+    thumbnail_path = "#{SITE_CONFIG['storage_dir']}/#{@wallpaper.thumbnail_path}"
+    send_file thumbnail_path
   end
 
   private

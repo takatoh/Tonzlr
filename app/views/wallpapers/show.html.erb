@@ -22,12 +22,12 @@
 
 <p>
   <strong>Thumbnail path:</strong>
-  <%= @wallpaper.thumbnail_path %>
+  <%= link_to @wallpaper.thumbnail_path, "/wallpapers/thumbnail/#{@wallpaper.id}" %>
 </p>
 
 <p>
   <strong>Sample path:</strong>
-  <%= @wallpaper.sample_path %>
+  <%= link_to @wallpaper.sample_path, "/wallpapers/sample/#{@wallpaper.id}" %>
 </p>
 
 <p>

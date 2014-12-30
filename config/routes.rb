@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   resources :images
 
   resources :wallpapers
+  get 'wallpapers/sample/:id' => "wallpapers#sample"
+  get 'wallpapers/thumbnail/:id' => "wallpapers#thumbnail"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
