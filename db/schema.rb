@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141229040752) do
+ActiveRecord::Schema.define(version: 20141230093231) do
 
   create_table "images", force: true do |t|
     t.integer  "wallpaper_id"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20141229040752) do
     t.string   "sample_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "images_count",   default: 0
   end
 
 end
