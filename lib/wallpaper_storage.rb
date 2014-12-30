@@ -8,7 +8,7 @@ class WallpaperStorage
   @@sample_dir = "samples"
   @@thumbnail_dir = "thumbs"
   @@sample_size = "800x800"
-  @@thumbnail_size = "150x150"
+  @@thumbnail_size = "180x180"
   @@format = "jpg"
 
 
