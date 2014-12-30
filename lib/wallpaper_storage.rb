@@ -42,6 +42,10 @@ class WallpaperStorage
   def delete_image(path)
     path = @storage_dir + path
     FileUtils.rm(path)
+    dir = path.parent
+    if dir.children.empty?
+      FileUtils.rmdir(dir)
+    end
   end
 
   def delete_sample_and_thumbnail(wp_id)
