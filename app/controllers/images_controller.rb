@@ -15,6 +15,7 @@ class ImagesController < ApplicationController
   # GET /images/new
   def new
     @image = Image.new
+    @image.wallpaper_id = session[:wp_id]
   end
 
   # GET /images/1/edit
@@ -25,6 +26,8 @@ class ImagesController < ApplicationController
   # POST /images.json
   def create
     @image = Image.new(image_params)
+    @image.file = params["image"]["file"]
+    @image.filename = params["image"]["file"].original_filename
 
     respond_to do |format|
       if @image.save

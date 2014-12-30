@@ -10,6 +10,7 @@ class WallpapersController < ApplicationController
   # GET /wallpapers/1
   # GET /wallpapers/1.json
   def show
+    session[:wp_id] = @wallpaper.id
   end
 
   # GET /wallpapers/new

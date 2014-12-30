@@ -1,5 +1,29 @@
-<h1>New image</h1>
+<h2>Add new size</h2>
 
-<%= render 'form' %>
+<%= form_for(@image) do |f| %>
+  <% if @image.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+      <ul>
+      <% @image.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :wallpaper_id %><br>
+    <%= f.hidden_field :wallpaper_id %>
+  </div>
+  <div class="field">
+    <%= f.label "File" %><br>
+    <%= f.file_field :file %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', images_path %>
