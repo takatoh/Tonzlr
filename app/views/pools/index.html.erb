@@ -1,29 +1,43 @@
-<h1>Listing pools</h1>
+<div class="sidebar">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Closed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="menuBlock">
+    <p><b><%= link_to '>> Create new pool', new_pool_path %></b></p>
+  </div>
 
-  <tbody>
-    <% @pools.each do |pool| %>
-      <tr>
-        <td><%= pool.name %></td>
-        <td><%= pool.description %></td>
-        <td><%= pool.closed %></td>
-        <td><%= link_to 'Show', pool %></td>
-        <td><%= link_to 'Edit', edit_pool_path(pool) %></td>
-        <td><%= link_to 'Destroy', pool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+  <div class="menuBlock">
+    <h2>Statistics</h2>
+    <ul>
+      <li>Pools: <%= @pools.count %></li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="main">
+
+<h2>Listing pools</h2>
+
+<table class="tagList">
+  <tr>
+    <th class="poolName">Name</th>
+    <th class="poolDest">Description</th>
+    <th class="poolDest">Counts</th>
+    <th class="poolCreated">Created</th>
+    <th class="poolCreated">Status</th>
+    <th></th>
+  </tr>
+
+<% @pools.each_with_index do |pool, i| %>
+  <tr class="<%= odd_or_even i %>">
+    <td><%= link_to pool.name, pool_path(pool) %></td>
+    <td><%= pool.description %></td>
+    <td><%= pool.poolings_count %></td>
+    <td><%= time_to_date(pool.created_at) %></td>
+    <td><%= pool.closed ? "close" : "OPEN" %></td>
+    <td><%= link_to 'Edit', edit_pool_path(pool) %></td>
+  </tr>
+<% end %>
 </table>
 
-<br>
 
-<%= link_to 'New Pool', new_pool_path %>
+</div>
