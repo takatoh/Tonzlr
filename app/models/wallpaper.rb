@@ -47,6 +47,25 @@ class Wallpaper < ActiveRecord::Base
     tagnames.map{|tag| add_tag(tag)}.compact
   end
 
+  def delete_tag(tagname)
+    tagging = taggings.select{|t| t.tag.name == tagname}.first
+    if tagging
+      tagging.delete
+      tagname
+    else
+      nil
+    end
+  end
+
+  def update_tags(tagname_string)
+    return nil if tagname_string.nil? || /\A *\z/ =~ tagname_string
+    tagnames = tagname_string.strip.split(/ +/)
+    tagnames0 = tags.map{|t| t.name}
+    (tagnames - tagnames0).each{|t| add_tag(t)}
+    (tagnames0 - tagnames).each{|t| delete_tag(t)}
+    tagnames
+  end
+
 
   before_create do |wp|
     image = Image.new
