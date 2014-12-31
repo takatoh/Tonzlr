@@ -1,19 +1,48 @@
-<p id="notice"><%= notice %></p>
+<div class="sidebar">
 
-<p>
-  <strong>Name:</strong>
-  <%= @pool.name %>
-</p>
+<div class="menuBlock">
+  <h2>Statistics</h2>
+  <ul>
+    <li>Wallpapers: <%=h number_of_wallpapers(@pool) %></li>
+    <li>Image files: <%=h number_of_images(@pool) %></li>
+    <li>Status: <%=h @pool.closed ? "Closed" : "Open" %></li>
+  </ul>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @pool.description %>
-</p>
+<div class="menuBlock">
+<h2>Option</h2>
+<ul>
+  <li><%= link_to 'Edit', edit_pool_path(@pool) %></li>
+  <li><%= link_to 'Delete', @pool, :confirm => 'Are you sure?', :method => :delete %></li>
+</ul>
+</div>
 
-<p>
-  <strong>Closed:</strong>
-  <%= @pool.closed %>
-</p>
+<hr>
 
-<%= link_to 'Edit', edit_pool_path(@pool) %> |
+<div class="menuBlock">
 <%= link_to 'Back', pools_path %>
+</div>
+
+</div>
+
+<div class="main">
+
+<h2>Pool: <%=h @pool.name %></h2>
+
+<div><%=h @pool.description %></div>
+
+<ul class="wpList">
+<% for wallpaper in @wallpapers %>
+  <li class="wpBox">
+    <%= link_to (image_tag namplr_url(wallpaper.thumbnail_path), :alt => wallpaper.title, :title => wallpaper.title),
+                :controller => 'wallpapers',
+                :action => 'show',
+                :id => wallpaper %>
+    <h3><%=h wallpaper.title %></h3>
+  </li>
+<% end %>
+</ul>
+
+<%= will_paginate @wallpapers %>
+
+</div>
