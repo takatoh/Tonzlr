@@ -26,7 +26,7 @@
   <tr class="<%= odd_or_even i %>">
     <td><%=h tag.id %></td>
     <td><%= link_to tag.name, :controller => 'wallpapers', :action => 'index', :tags => tag.name %></td>
-    <td><%=h tag.count %></td>
+    <td><%=h tag.taggings.size %></td>
     <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
   </tr>
   <% end %>
