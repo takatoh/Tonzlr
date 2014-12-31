@@ -1,4 +1,4 @@
-<h2>Add new size</h2>
+<h2>Add new size wallpaper</h2>
 
 <%= form_for(@image) do |f| %>
   <% if @image.errors.any? %>
@@ -14,7 +14,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :wallpaper_id %><br>
     <%= f.hidden_field :wallpaper_id %>
   </div>
   <div class="field">
