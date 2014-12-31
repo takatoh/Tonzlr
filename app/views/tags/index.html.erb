@@ -2,10 +2,10 @@
 
 <div class="menuBlock">
   <h2>Order by</h2>
-<% form_tag 'tags', {:method => 'get'} do %>
-  <%= select_tag 'order', options_for_select({"Id" => 'id', "Name" => 'name', "Count" => 'count'}, 'name') %>
-  <%= submit_tag 'Reset' %>
-<% end %>
+  <%= form_tag 'tags', :method => 'get' do %>
+    <%= select_tag 'order', options_for_select({"Id" => 'id', "Name" => 'name', "Count" => 'count'}, 'name') %>
+    <%= submit_tag 'Reset' %>
+  <% end %>
 </div>
 
 </div>
