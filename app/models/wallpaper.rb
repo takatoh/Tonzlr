@@ -21,6 +21,14 @@ class Wallpaper < ActiveRecord::Base
     @filename
   end
 
+  def tagname_string
+    @tagname_string
+  end
+
+  def tagname_stirng=(str)
+    @tagname_string = str
+  end
+
   def add_tag(tagname)
     tag = Tag.where('name = ?', tagname).first || Tag.create(:name => tagname)
     unless tags.map{|t| t.name}.include?(tag.name)
