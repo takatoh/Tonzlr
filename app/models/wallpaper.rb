@@ -3,6 +3,8 @@ class Wallpaper < ActiveRecord::Base
   has_many :images, :dependent => :destroy
   has_many :taggings, :dependent => :destroy, :foreign_key => :taggable_id
   has_many :tags, :through => :taggings
+  has_many :poolings, :dependent => :destroy
+  has_many :pools, :through => :poolings
 
 
   def file=(file)
