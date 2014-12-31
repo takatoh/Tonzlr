@@ -4,17 +4,17 @@
 <h2>Sizes</h2>
 <ul>
 <% @wallpaper.images.each do |img| -%>
-  <li><%= link_to img.image_size_string, namplr_url(img.path) %></li>
+  <li><%= link_to img.size_string, url_to_image(img) %></li>
 <% end -%>
-  <li><%= link_to '&raquo; Add another size', :controller => 'images', :action => 'new', :wpid => @wallpaper.id %>
+  <li><%= link_to ">> Add another size", :controller => 'images', :action => 'new', :wpid => @wallpaper.id %>
 </ul>
 </div>
 
 <div class="menuBlock">
 <h2>Tags</h2>
 <ul>
-<% @wallpaper.tag_list.sort.each do |tag| -%>
-  <li><%= link_to space_out(tag), :action => 'index', :tags => tag %></li>
+<% @wallpaper.tags.sort.each do |tag| -%>
+  <li><%= link_to tag.name, :action => 'index', :tags => tag %></li>
 <% end -%>
 </ul>
 </div>
@@ -26,7 +26,7 @@
   <li>Title: <%=h @wallpaper.title %></li>
   <li>Creator: <%=h @wallpaper.creator %></li>
   <li>Series: <%=h @wallpaper.series %></li>
-  <li>Source: <%= hostname_link @wallpaper.source, 10 %></li>
+  <li>Source: <%= @wallpaper.source %></li>
   <li>Posted: <%=h time_to_date(@wallpaper.created_at) %></li>
 </ul>
 </div>
@@ -58,5 +58,5 @@
   <% end%>
 <% end%>
 
-  <%= image_tag namplr_url(@wallpaper.sample_path) %>
+  <%= image_tag sample_path(@wallpaper) %>
 </div>
