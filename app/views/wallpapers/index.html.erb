@@ -1,7 +1,7 @@
 <div class="sidebar">
 
 <div class="menuBlock">
-  <p><b><%= link_to '&raquo; Post wallpaper', new_wallpaper_path %></b></p>
+  <p><b><%= link_to ">> Post wallpaper", new_wallpaper_path %></b></p>
 </div>
 
 <div class="menuBlock">
@@ -16,7 +16,7 @@
   <h2>Tags</h2>
   <ul>
   <% @tags_on_page.sort.each do |tagname| -%>
-    <li><%= link_to space_out(tagname), :action => 'index', :tags => tagname %> (<%= @tags.find{|t| t.name == tagname}.count %>)</li>
+    <li><%= link_to tagname, :action => 'index', :tags => tagname %> (<%= @tags.select{|t| t.name == tagname}.count %>)</li>
   <% end -%>
   </ul>
 </div>
@@ -24,7 +24,7 @@
 <div class="menuBlock">
   <h2>Statistics</h2>
   <ul>
-    <li>Wallpapers: <%=h @wallpapers.total_entries %></li>
+    <li>Wallpapers: <%=h @wallpapers.count %></li>
     <li>Image files: <%=h @total_images %></li>
   </ul>
 </div>
@@ -36,7 +36,7 @@
 <ul class="wpList">
 <% for wallpaper in @wallpapers %>
   <li class="wpBox">
-    <%= link_to (image_tag namplr_url(wallpaper.thumbnail_path), :alt => wallpaper.title, :title => wallpaper.title),
+    <%= link_to (image_tag thumbnail_path(wallpaper), :alt => wallpaper.title, :title => wallpaper.title),
                 :action => 'show',
                 :id => wallpaper,
                 :tags => params[:tags] %>
@@ -44,7 +44,5 @@
   </li>
 <% end %>
 </ul>
-
-<%= will_paginate @wallpapers %>
 
 </div>

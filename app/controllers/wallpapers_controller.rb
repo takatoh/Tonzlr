@@ -5,6 +5,9 @@ class WallpapersController < ApplicationController
   # GET /wallpapers.json
   def index
     @wallpapers = Wallpaper.all
+    @tags = Tag.all
+    @tags_on_page = tags_on_page(@wallpapers)
+    @total_images = Image.count
   end
 
   # GET /wallpapers/1
@@ -88,4 +91,15 @@ class WallpapersController < ApplicationController
     def wallpaper_params
       params.require(:wallpaper).permit(:title, :series, :creator, :source, :thumbnail_path, :sample_path)
     end
+
+  def tags_on_page(wallpapers)
+    tags = []
+    for wp in wallpapers
+      for tag in wp.tags
+        tags << tag.name unless tags.include?(tag.name)
+      end
+    end
+    tags
+  end
+
 end
