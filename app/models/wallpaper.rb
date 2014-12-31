@@ -77,14 +77,15 @@ class Wallpaper < ActiveRecord::Base
     image.file = wp.file
     image.filename = wp.filename
     wp.images << image
+    wp.add_tags(wp.tagname_string)
   end
 
   after_create do |wp|
+    wp.reload
     storage = WallpaperStorage.new(SITE_CONFIG["storage_dir"])
     sample_path, thumbnail_path = storage.make_sample_and_thumbnail(wp.id, wp.filename)
     wp.update_attributes(sample_path: sample_path)
     wp.update_attributes(thumbnail_path: thumbnail_path)
-    wp.add_tags(wp.tagname_string)
   end
 
   after_update do |wp|
