@@ -1,3 +1,5 @@
+<div class="main">
+
 <h2>New wallpaper</h2>
 
 <%= form_for(@wallpaper) do |f| %>
@@ -38,8 +40,10 @@
     <%= f.file_field :file %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Post" %>
   </div>
 <% end %>
 
 <%= link_to 'Back', wallpapers_path %>
+
+</div>
