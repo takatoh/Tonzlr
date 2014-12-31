@@ -27,14 +27,15 @@ class PoolingsController < ApplicationController
   # POST /poolings.json
   def create
     @pooling = Pooling.new(pooling_params)
+    @wallpaper = Wallpaper.find(@pooling.wallpaper_id)
 
     respond_to do |format|
       if @pooling.save
-        format.html { redirect_to @pooling, notice: 'Pooling was successfully created.' }
-        format.json { render :show, status: :created, location: @pooling }
+        format.html { redirect_to @wallpaper, notice: 'Pooling was successfully created.' }
+        # format.json { render :show, status: :created, location: @pooling }
       else
         format.html { render :new }
-        format.json { render json: @pooling.errors, status: :unprocessable_entity }
+        # format.json { render json: @pooling.errors, status: :unprocessable_entity }
       end
     end
   end
