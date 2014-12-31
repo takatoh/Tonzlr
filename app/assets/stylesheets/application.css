@@ -13,3 +13,258 @@
  *= require_tree .
  *= require_self
  */
+
+body { background-color: ivory; color: #333; }
+
+body, p, ol, ul, li, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+a:visited { color: #666; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+
+div.header {
+  margin: 20px 20px;
+  font-family: sans-serif;
+}
+
+ul.wpList {
+  list-style-type: none;
+}
+
+ul.wpList li.wpBox {
+  float: left;
+  width: 190px;
+  height: 200px;
+}
+
+ul.wpList li.wpBox a {
+//  border: none;
+  text-align: center;
+}
+ul.wpList li.wpBox a img {
+  border: solid 1px #000000;
+}
+/*
+ul.wpList li.wpBox a img:visited {
+  border: solid 1px #999999;
+}
+*/
+
+ul.wpList li.wpBox h3 {
+  margin-top: 0px;
+}
+
+div.pageNavi {
+  padding: 10px;
+  clear: both;
+  text-align: center;
+}
+
+
+div.main {
+  padding-top: 15px;
+  padding-left: 215px;
+  padding-right: 15px;
+}
+
+div.sidebar {
+  position: absolute;
+  width: 170px;
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+//  background-color: #eeeeee;
+}
+
+.sidebar div.menuBlock {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: #eeeeee;
+}
+
+.sidebar div.menuBlock h2{
+  margin-bottom: 5px;
+}
+
+.sidebar div.menuBlock li{
+  list-style-type: none;
+}
+
+ul.flatList {
+  height: 20px;
+  padding-left: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #eeeeee;
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+}
+
+ul.flatList li {
+  float: left;
+  width: 100px;
+  height: 100%;
+  list-style-type: none;
+  text-align: center;
+}
+
+
+table.tagList {
+  border-collapse: collapse;
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+}
+
+table.tagList th {
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+  background-color: #eeeeee;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+table.tagList th.tagId {
+  width: 30px;
+}
+
+table.tagList th.tagName {
+  width: 250px;
+}
+
+table.tagList th.tagCount {
+  width: 50px;
+}
+
+table.tagList td {
+//  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+table.tagList a {
+  text-decoration: none;
+}
+
+tr.odd {
+  background-color: #eeeeee;
+}  
+  
+h2 {
+  padding: 10px 10px 10px 10px;
+}
+
+div.editBlock {
+  float: left;
+  width: 280px;
+  padding: 10px;
+  border: dashed 1px #999;
+}
+
+
+table.poolList th {
+  border-style: solid;
+  border-width: 1px 0px 1px 0px;
+  background-color: #eeeeee;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+table.poolList th.poolName {
+  width: 250px;
+}
+
+table.poolList th.poolDest {
+  width: 250px;
+}
+
+table.poolList th.poolCreated {
+  width: 100px;
+}
