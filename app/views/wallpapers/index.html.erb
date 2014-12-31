@@ -16,7 +16,7 @@
   <h2>Tags</h2>
   <ul>
   <% @tags_on_page.sort.each do |tagname| -%>
-    <li><%= link_to tagname, :action => 'index', :tags => tagname %> (<%= @tags.select{|t| t.name == tagname}.count %>)</li>
+    <li><%= link_to tagname, :action => 'index', :tags => tagname %> (<%= num_of_tagname(tagname) %>)</li>
   <% end -%>
   </ul>
 </div>

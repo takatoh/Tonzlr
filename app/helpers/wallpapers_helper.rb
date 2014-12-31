@@ -16,4 +16,8 @@ module WallpapersHelper
     time.strftime("%Y-%m-%d")
   end
 
+  def num_of_tagname(tagname)
+    @tags.select{|t| t.name == tagname}.first.taggings.size
+  end
+
 end
