@@ -1,0 +1,25 @@
+<%= form_for(@pooling) do |f| %>
+  <% if @pooling.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pooling.errors.count, "error") %> prohibited this pooling from being saved:</h2>
+
+      <ul>
+      <% @pooling.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pool_id %><br>
+    <%= f.number_field :pool_id %>
+  </div>
+  <div class="field">
+    <%= f.label :wallpaper_id %><br>
+    <%= f.number_field :wallpaper_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

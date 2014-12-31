@@ -1,0 +1,27 @@
+<h1>Listing poolings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pool</th>
+      <th>Wallpaper</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poolings.each do |pooling| %>
+      <tr>
+        <td><%= pooling.pool_id %></td>
+        <td><%= pooling.wallpaper_id %></td>
+        <td><%= link_to 'Show', pooling %></td>
+        <td><%= link_to 'Edit', edit_pooling_path(pooling) %></td>
+        <td><%= link_to 'Destroy', pooling, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pooling', new_pooling_path %>

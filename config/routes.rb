@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :poolings
+
   resources :pools
 
   resources :taggings
