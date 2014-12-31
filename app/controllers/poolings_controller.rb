@@ -15,6 +15,8 @@ class PoolingsController < ApplicationController
   # GET /poolings/new
   def new
     @pooling = Pooling.new
+    @pooling.wallpaper_id = session[:wp_id]
+    @pools = Pool.order(:name).where('closed = ?', false)
   end
 
   # GET /poolings/1/edit

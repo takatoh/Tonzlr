@@ -12,12 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :pool_id %><br>
-    <%= f.number_field :pool_id %>
+    <%= f.label "Pool" %><br>
+    <%= f.collection_select :pool_id, @pools, :id, :name %>
   </div>
   <div class="field">
-    <%= f.label :wallpaper_id %><br>
-    <%= f.number_field :wallpaper_id %>
+    <%= f.hidden_field :wallpaper_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
