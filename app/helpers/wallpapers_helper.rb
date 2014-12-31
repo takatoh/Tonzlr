@@ -9,7 +9,7 @@ module WallpapersHelper
   end
 
   def url_to_image(img)
-    "/images/#{img.wallpaper_id.to_s}/#{File.basename(img.path)}"
+    "/images/file/#{img.id.to_s}"
   end
 
   def time_to_date(time)

@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :file]
 
   # GET /images
   # GET /images.json
@@ -63,6 +63,13 @@ class ImagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def file
+    # image = Image.find(params[:id])
+    file = "#{SITE_CONFIG['storage_dir']}/#{@image.path}"
+    send_file file
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
