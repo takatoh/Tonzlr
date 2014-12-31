@@ -4,7 +4,8 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    case params[:order]
+    @order = params[:order] || 'name'
+    case @order
     when 'name'
       @tags = Tag.order('name')
     when 'id'
