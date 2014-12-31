@@ -44,6 +44,7 @@ class WallpapersController < ApplicationController
   # PATCH/PUT /wallpapers/1
   # PATCH/PUT /wallpapers/1.json
   def update
+    @wallpaper.tagname_string = params["wallpaper"]["tagname_string"]
     respond_to do |format|
       if @wallpaper.update(wallpaper_params)
         format.html { redirect_to @wallpaper, notice: 'Wallpaper was successfully updated.' }

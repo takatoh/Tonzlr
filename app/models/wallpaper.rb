@@ -87,6 +87,10 @@ class Wallpaper < ActiveRecord::Base
     wp.add_tags(wp.tagname_string)
   end
 
+  after_update do |wp|
+    wp.update_tags(wp.tagname_string)
+  end
+
   after_destroy do |wp|
     storage = WallpaperStorage.new(SITE_CONFIG["storage_dir"])
     storage.delete_sample_and_thumbnail(wp.id)
