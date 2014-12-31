@@ -13,7 +13,7 @@
 <div class="menuBlock">
 <h2>Tags</h2>
 <ul>
-<% @wallpaper.tags.sort.each do |tag| -%>
+<% @tags.each do |tag| -%>
   <li><%= link_to tag.name, :action => 'index', :tags => tag %></li>
 <% end -%>
 </ul>

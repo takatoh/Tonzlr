@@ -14,6 +14,7 @@ class WallpapersController < ApplicationController
   # GET /wallpapers/1.json
   def show
     session[:wp_id] = @wallpaper.id
+    @tags = @wallpaper.tags.sort_by{|t| t.name}
   end
 
   # GET /wallpapers/new
