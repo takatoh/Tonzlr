@@ -10,6 +10,7 @@ class PoolsController < ApplicationController
   # GET /pools/1
   # GET /pools/1.json
   def show
+    @wallpapers = @pool.wallpapers
   end
 
   # GET /pools/new

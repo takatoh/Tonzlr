@@ -5,7 +5,7 @@
   <ul>
     <li>Wallpapers: <%=h number_of_wallpapers(@pool) %></li>
     <li>Image files: <%=h number_of_images(@pool) %></li>
-    <li>Status: <%=h @pool.closed ? "Closed" : "Open" %></li>
+    <li>Status: <%=h @pool.closed ? "closed" : "OPEN" %></li>
   </ul>
 </div>
 
@@ -34,7 +34,7 @@
 <ul class="wpList">
 <% for wallpaper in @wallpapers %>
   <li class="wpBox">
-    <%= link_to (image_tag namplr_url(wallpaper.thumbnail_path), :alt => wallpaper.title, :title => wallpaper.title),
+    <%= link_to (image_tag thumbnail_path(wallpaper), :alt => wallpaper.title, :title => wallpaper.title),
                 :controller => 'wallpapers',
                 :action => 'show',
                 :id => wallpaper %>
@@ -42,7 +42,5 @@
   </li>
 <% end %>
 </ul>
-
-<%= will_paginate @wallpapers %>
 
 </div>
