@@ -25,7 +25,7 @@ class Wallpaper < ActiveRecord::Base
     @tagname_string
   end
 
-  def tagname_stirng=(str)
+  def tagname_string=(str)
     @tagname_string = str
   end
 
@@ -61,6 +61,7 @@ class Wallpaper < ActiveRecord::Base
     sample_path, thumbnail_path = storage.make_sample_and_thumbnail(wp.id, wp.filename)
     wp.update_attributes(sample_path: sample_path)
     wp.update_attributes(thumbnail_path: thumbnail_path)
+    wp.add_tags(wp.tagname_string)
   end
 
   after_destroy do |wp|

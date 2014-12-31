@@ -28,6 +28,7 @@ class WallpapersController < ApplicationController
     @wallpaper = Wallpaper.new(wallpaper_params)
     @wallpaper.file = params["wallpaper"]["file"]
     @wallpaper.filename = params["wallpaper"]["file"].original_filename
+    @wallpaper.tagname_string = params["wallpaper"]["tagname_string"]
 
     respond_to do |format|
       if @wallpaper.save
