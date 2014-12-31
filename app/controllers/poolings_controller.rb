@@ -57,9 +57,10 @@ class PoolingsController < ApplicationController
   # DELETE /poolings/1
   # DELETE /poolings/1.json
   def destroy
+    @wallpaper = Wallpaper.find(session[:wp_id])
     @pooling.destroy
     respond_to do |format|
-      format.html { redirect_to poolings_url, notice: 'Pooling was successfully destroyed.' }
+      format.html { redirect_to wallpaper_path(@wallpaper), notice: 'Pooling was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
