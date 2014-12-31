@@ -8,6 +8,20 @@
 </head>
 <body>
 
+<div class="header">
+  <h1><%= link_to 'Tonzlr', :controller => :wallpapers, :action => 'index' %></h1>
+</div>
+
+<ul class="flatList">
+  <li><%= link_to 'Wallpapers', :controller => 'wallpapers', :action => 'index' %></li>
+  <li><%= link_to 'Tags', :controller => 'tags', :action => 'index' %></li>
+  <li><%= link_to 'Pools', :controller => 'pools', :action => 'index' %></li>
+</ul>
+
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+
 <%= yield %>
 
 </body>
