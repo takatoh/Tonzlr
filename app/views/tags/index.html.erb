@@ -1,25 +1,37 @@
-<h1>Listing tags</h1>
+<div class="sidebar">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="menuBlock">
+  <h2>Order by</h2>
+<% form_tag 'tags', {:method => 'get'} do %>
+  <%= select_tag 'order', options_for_select({"Id" => 'id', "Name" => 'name', "Count" => 'count'}, 'name') %>
+  <%= submit_tag 'Reset' %>
+<% end %>
+</div>
 
-  <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= link_to 'Show', tag %></td>
-        <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
-        <td><%= link_to 'Destroy', tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+</div>
+
+<div class="main">
+
+<h2>Listing tags</h2>
+
+<table class="tagList">
+  <tr>
+    <th class="tagId">Id</th>
+    <th class="tagName">Name</th>
+    <th class="tagCount">Count</th>
+    <th></th>
+  </tr>
+
+  <% @tags.each_with_index do |tag, i| %>
+  <tr class="<%= odd_or_even i %>">
+    <td><%=h tag.id %></td>
+    <td><%= link_to tag.name, :controller => 'wallpapers', :action => 'index', :tags => tag.name %></td>
+    <td><%=h tag.count %></td>
+    <td><%= link_to 'Edit', edit_tag_path(tag) %></td>
+  </tr>
+  <% end %>
+
 </table>
 
-<br>
 
-<%= link_to 'New Tag', new_tag_path %>
+</div>
