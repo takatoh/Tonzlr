@@ -21,6 +21,24 @@ class Wallpaper < ActiveRecord::Base
     @filename
   end
 
+  def add_tag(tagname)
+    tag = Tag.where('name = ?', tagname).first || Tag.create(:name => tagname)
+    unless tags.map{|t| t.name}.include?(tag.name)
+      tagging = Tagging.create(:tag_id => tag.id, :taggable_id => self.id, :taggable_type => "Wallpaper")
+      taggings << tagging
+      tag.taggings << tagging
+      tag
+    else
+      nil
+    end
+  end
+
+  def add_tags(tagname_string)
+    return nil if tagname_string.nil? || /\A *\z/ =~ tagname_string
+    tagnames = tagname_string.split(/ +/)
+    tagnames.map{|tag| add_tag(tag)}.compact
+  end
+
 
   before_create do |wp|
     image = Image.new
