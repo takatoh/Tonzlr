@@ -6,7 +6,7 @@
 <% @wallpaper.images.each do |img| -%>
   <li><%= link_to img.size_string, url_to_image(img) %></li>
 <% end -%>
-  <li><%= link_to ">> Add another size", :controller => 'images', :action => 'new', :wpid => @wallpaper.id %>
+  <li><%= link_to raw("&raquo; Add another size"), :controller => 'images', :action => 'new', :wpid => @wallpaper.id %>
 </ul>
 </div>
 
