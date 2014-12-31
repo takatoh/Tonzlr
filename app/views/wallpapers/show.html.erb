@@ -31,6 +31,15 @@
 </p>
 
 <p>
+  <strong>Tags:</strong>
+  <ul>
+    <% @wallpaper.tags.each do |tag| %>
+    <li><%= tag.name %></li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
   <strong>Images:</strong>
   <ul>
     <% @wallpaper.images.each do |img| %>
