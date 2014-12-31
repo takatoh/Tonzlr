@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Pool:</strong>
+  <%= @pooling.pool_id %>
+</p>
+
+<p>
+  <strong>Wallpaper:</strong>
+  <%= @pooling.wallpaper_id %>
+</p>
+
+<%= link_to 'Edit', edit_pooling_path(@pooling) %> |
+<%= link_to 'Back', poolings_path %>
