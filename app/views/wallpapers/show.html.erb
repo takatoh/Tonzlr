@@ -1,55 +1,62 @@
-<p id="notice"><%= notice %></p>
+<div class="sidebar">
 
-<p>
-  <strong>Title:</strong>
-  <%= @wallpaper.title %>
-</p>
+<div class="menuBlock">
+<h2>Sizes</h2>
+<ul>
+<% @wallpaper.images.each do |img| -%>
+  <li><%= link_to img.image_size_string, namplr_url(img.path) %></li>
+<% end -%>
+  <li><%= link_to '&raquo; Add another size', :controller => 'images', :action => 'new', :wpid => @wallpaper.id %>
+</ul>
+</div>
 
-<p>
-  <strong>Series:</strong>
-  <%= @wallpaper.series %>
-</p>
+<div class="menuBlock">
+<h2>Tags</h2>
+<ul>
+<% @wallpaper.tag_list.sort.each do |tag| -%>
+  <li><%= link_to space_out(tag), :action => 'index', :tags => tag %></li>
+<% end -%>
+</ul>
+</div>
 
-<p>
-  <strong>Creator:</strong>
-  <%= @wallpaper.creator %>
-</p>
+<div class="menuBlock">
+<h2>Statistics</h2>
+<ul>
+  <li>Id: <%=h @wallpaper.id %></li>
+  <li>Title: <%=h @wallpaper.title %></li>
+  <li>Creator: <%=h @wallpaper.creator %></li>
+  <li>Series: <%=h @wallpaper.series %></li>
+  <li>Source: <%= hostname_link @wallpaper.source, 10 %></li>
+  <li>Posted: <%=h time_to_date(@wallpaper.created_at) %></li>
+</ul>
+</div>
 
-<p>
-  <strong>Source:</strong>
-  <%= @wallpaper.source %>
-</p>
+<div class="menuBlock">
+<h2>Option</h2>
+<ul>
+  <li><%= link_to 'Add another size', :controller => 'images', :action => 'new', :wpid => @wallpaper.id %>
+  <li><%= link_to 'Edit', edit_wallpaper_path(@wallpaper) %></li>
+  <li><%= link_to 'Add to pool', :controller => 'poolings', :action => 'new', :wpid => @wallpaper.id %>
+  <li><%= link_to 'Delete', @wallpaper, :confirm => 'Are you sure?', :method => :delete %></li>
+</ul>
+</div>
 
-<p>
-  <strong>Thumbnail path:</strong>
-  <%= link_to @wallpaper.thumbnail_path, "/wallpapers/thumbnail/#{@wallpaper.id}" %>
-</p>
+<hr>
 
-<p>
-  <strong>Sample path:</strong>
-  <%= link_to @wallpaper.sample_path, "/wallpapers/sample/#{@wallpaper.id}" %>
-</p>
+<div class="menuBlock">
+<%= link_to 'Back', :action => 'index', :page => session[:page], :tags => params[:tags] %>
+</div>
 
-<p>
-  <strong>Tags:</strong>
-  <ul>
-    <% @wallpaper.tags.each do |tag| %>
-    <li><%= tag.name %></li>
-    <% end %>
-  </ul>
-</p>
+</div>
 
-<p>
-  <strong>Images:</strong>
-  <ul>
-    <% @wallpaper.images.each do |img| %>
-    <li><%= img.path %> (<%= img.size_string %>)</li>
-    <% end %>
-  </ul>
-</p>
+<div class="main">
 
+<% if @wallpaper.pools %>
+  <% @wallpaper.poolings.each do |pooling| %>
+    <div>This wallpaper belongs to the <%= link_to pooling.pool.name, pooling.pool %> pool.
+         (<%= link_to 'remove from pool', pooling, :confirm => 'Are you sure?', :method => :delete %>)</div>
+  <% end%>
+<% end%>
 
-<%= link_to 'Edit', edit_wallpaper_path(@wallpaper) %> |
-<%= link_to 'Add new size', new_image_path %> |
-<%= link_to 'Add to pool', new_pooling_path %> |
-<%= link_to 'Back', wallpapers_path %>
+  <%= image_tag namplr_url(@wallpaper.sample_path) %>
+</div>
