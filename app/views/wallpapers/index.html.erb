@@ -6,10 +6,10 @@
 
 <div class="menuBlock">
   <h2>Search</h2>
-<% form_tag 'wallpapers', :method => :get do %>
-  <p><%= text_field_tag :tags, params[:tags] %></p>
-  <%= submit_tag 'Search' %>
-<% end %>
+  <%= form_tag 'wallpapers', :method => :get do %>
+    <p><%= text_field_tag :tags, params[:tags], size: 10 %></p>
+    <%= submit_tag 'Search' %>
+  <% end %>
 </div>
 
 <div class="menuBlock">
