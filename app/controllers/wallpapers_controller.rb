@@ -4,7 +4,11 @@ class WallpapersController < ApplicationController
   # GET /wallpapers
   # GET /wallpapers.json
   def index
-    @wallpapers = Wallpaper.all
+    unless params[:tags].blank?
+      @wallpapers = Wallpaper.joins(:tags).where('name = ?', params[:tags])
+    else
+      @wallpapers = Wallpaper.all
+    end
     @tags = Tag.all
     @tags_on_page = tags_on_page(@wallpapers)
     @total_images = Image.count
