@@ -7,11 +7,11 @@ class TagsController < ApplicationController
     @order = params[:order] || 'name'
     case @order
     when 'name'
-      @tags = Tag.order('name')
+      @tags = Tag.order('name').paginate(page: params[:page], per_page: 20)
     when 'id'
-      @tags = Tag.order('tags.id desc')
+      @tags = Tag.order('tags.id desc').paginate(page: params[:page], per_page: 20)
     else
-      @tags = Tag.order('name')
+      @tags = Tag.order('name').paginate(page: params[:page], per_page: 20)
     end
   end
 
