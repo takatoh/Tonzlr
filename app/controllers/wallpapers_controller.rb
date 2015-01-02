@@ -17,7 +17,7 @@ class WallpapersController < ApplicationController
     end
     @tags = Tag.all
     @tags_on_page = tags_on_page(@wallpapers)
-    @total_images = Image.count
+    @total_images = total_images(@wallpapers)
   end
 
   # GET /wallpapers/1
@@ -112,6 +112,12 @@ class WallpapersController < ApplicationController
         end
       end
       tags
+    end
+
+    def total_images(wallpapers)
+      wallpapers.inject(0) do |t, wp|
+        t + wp.images.size
+      end
     end
 
 end
