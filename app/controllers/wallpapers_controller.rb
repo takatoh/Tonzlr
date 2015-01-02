@@ -5,7 +5,9 @@ class WallpapersController < ApplicationController
   # GET /wallpapers.json
   def index
     unless params[:tags].blank?
-      @wallpapers = Wallpaper.joins(:tags).where('name = ?', params[:tags])
+      @wallpapers = Wallpaper.joins(:tags).
+        where('name = ?', params[:tags]).
+        paginate(page: params[:page], per_page: 4)
     else
       @wallpapers = Wallpaper.
         order(id: :desc).
