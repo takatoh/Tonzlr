@@ -104,14 +104,14 @@ class WallpapersController < ApplicationController
       params.require(:wallpaper).permit(:title, :series, :creator, :source, :thumbnail_path, :sample_path)
     end
 
-  def tags_on_page(wallpapers)
-    tags = []
-    for wp in wallpapers
-      for tag in wp.tags
-        tags << tag.name unless tags.include?(tag.name)
+    def tags_on_page(wallpapers)
+      tags = []
+      for wp in wallpapers
+        for tag in wp.tags
+          tags << tag.name unless tags.include?(tag.name)
+        end
       end
+      tags
     end
-    tags
-  end
 
 end
