@@ -7,11 +7,11 @@ class WallpapersController < ApplicationController
     unless params[:tags].blank?
       @wallpapers = Wallpaper.joins(:tags).
         where('name = ?', params[:tags]).
-        paginate(page: params[:page], per_page: 4)
+        paginate(page: params[:page], per_page: 20)
     else
       @wallpapers = Wallpaper.
         order(id: :desc).
-        paginate(page: params[:page], per_page: 4)
+        paginate(page: params[:page], per_page: 20)
     end
     @tags = Tag.all
     @tags_on_page = tags_on_page(@wallpapers)
