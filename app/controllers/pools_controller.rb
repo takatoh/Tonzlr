@@ -4,7 +4,7 @@ class PoolsController < ApplicationController
   # GET /pools
   # GET /pools.json
   def index
-    @pools = Pool.all
+    @pools = Pool.paginate(page: params[:page], per_page: 25)
   end
 
   # GET /pools/1
