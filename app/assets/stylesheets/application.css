@@ -115,7 +115,7 @@ ul.wpList {
 }
 
 ul.wpList li.wpBox {
-  float: left;
+  /*float: left;*/
   width: 190px;
   height: 200px;
 }

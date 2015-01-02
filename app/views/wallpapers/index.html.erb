@@ -33,7 +33,8 @@
 
 <div class="main">
 
-<ul class="wpList">
+
+<ul class="wpList" class="clearfix">
 <% for wallpaper in @wallpapers %>
   <li class="wpBox">
     <%= link_to (image_tag thumbnail_path(wallpaper), :alt => wallpaper.title, :title => wallpaper.title),
@@ -45,7 +46,7 @@
 <% end %>
 </ul>
 
-<div>
+<div class="pageNavi">
 <%= will_paginate @wallpapers, previous_label: '&laquo; Prev', next_label: 'Next &raquo;' %>
 </div>
 
