@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :file]
+  protect_from_forgery :except => ["create"]
 
   # GET /images
   # GET /images.json
