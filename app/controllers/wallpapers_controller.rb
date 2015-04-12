@@ -1,5 +1,6 @@
 class WallpapersController < ApplicationController
   before_action :set_wallpaper, only: [:show, :edit, :update, :destroy, :sample, :thumbnail]
+  protect_from_forgery :except => ["create"]
 
   # GET /wallpapers
   # GET /wallpapers.json
