@@ -1,3 +1,5 @@
+require 'mime/types'
+
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :file]
   protect_from_forgery :except => ["create"]
@@ -68,7 +70,9 @@ class ImagesController < ApplicationController
   def file
     # image = Image.find(params[:id])
     file = "#{SITE_CONFIG['storage_dir']}/#{@image.path}"
-    send_file file
+    filename = File.basename(file)
+    mimetype = MIME::Types.type_for(file)[0].to_s
+    send_file file, :type => mimetype, :filename => filename
   end
 
 
