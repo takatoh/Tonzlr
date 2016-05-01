@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 # Pagination
 gem 'will_paginate'
+
+# MIME type
+gem 'mime-types'
