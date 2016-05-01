@@ -2,6 +2,8 @@
 
 <h2>Editing wallpaper</h2>
 
+<%= image_tag thumbnail_path(@wallpaper) %>
+
 <%= form_for(@wallpaper) do |f| %>
   <% if @wallpaper.errors.any? %>
     <div id="error_explanation">
