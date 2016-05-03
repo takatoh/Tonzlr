@@ -33,8 +33,8 @@ class WallpaperStorage
     wp_path = @storage_dir + @@file_dir + wp_id.to_s + filename
     sample_path = @storage_dir + @@sample_dir + "#{wp_id.to_s}.#{@@format}"
     thumbnail_path = @storage_dir + @@thumbnail_dir + "#{wp_id.to_s}.#{@@format}"
-    system("convert -scale #{@@sample_size} #{wp_path} #{sample_path}")
-    system("convert -scale #{@@thumbnail_size} #{wp_path} #{thumbnail_path}")
+    system("convert -scale #{@@sample_size} \"#{wp_path}\" #{sample_path}")
+    system("convert -scale #{@@thumbnail_size} \"#{wp_path}\" #{thumbnail_path}")
     [sample_path.relative_path_from(@storage_dir).to_s,
      thumbnail_path.relative_path_from(@storage_dir).to_s]
   end
