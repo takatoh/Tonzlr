@@ -76,4 +76,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+
+  SITE_CONFIG = YAML.load_file("config/site_config.yml")[Rails.env]
+
 end
