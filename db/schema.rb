@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141231052318) do
 
-  create_table "images", force: true do |t|
+  create_table "images", force: :cascade do |t|
     t.integer  "wallpaper_id"
     t.integer  "width"
     t.integer  "height"
@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(version: 20141231052318) do
     t.datetime "updated_at"
   end
 
-  create_table "poolings", force: true do |t|
+  create_table "poolings", force: :cascade do |t|
     t.integer  "pool_id"
     t.integer  "wallpaper_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "pools", force: true do |t|
+  create_table "pools", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.integer  "poolings_count", default: 0
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20141231052318) do
     t.datetime "updated_at"
   end
 
-  create_table "taggings", force: true do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
     t.string   "taggable_type"
@@ -48,11 +48,11 @@ ActiveRecord::Schema.define(version: 20141231052318) do
   add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
 
-  create_table "tags", force: true do |t|
+  create_table "tags", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "wallpapers", force: true do |t|
+  create_table "wallpapers", force: :cascade do |t|
     t.string   "title"
     t.string   "series"
     t.string   "creator"
