@@ -1,21 +1,4 @@
 Rails.application.routes.draw do
-  resources :poolings
-
-  resources :pools
-
-  resources :taggings
-
-  resources :tags
-
-  get 'images/file/:id' => "images#file"
-  resources :images
-
-  resources :wallpapers
-  get 'wallpapers/sample/:id' => "wallpapers#sample"
-  get 'wallpapers/thumbnail/:id' => "wallpapers#thumbnail"
-
-  root :to => "wallpapers#index"
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
