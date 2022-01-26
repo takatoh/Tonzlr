@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :tags
 
-  get 'image/file/:id' => 'image#file'
+  get 'images/file/:id' => 'images#file'
   resources :images
 
   resources :wallpapers
