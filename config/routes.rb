@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :wallpapers
   get 'wallpapers/sample/:id' => 'wallpapers#sample'
-  get 'wallpapers/thumbnails/:id' => 'wallpapers#thumbnails'
+  get 'wallpapers/thumbnail/:id' => 'wallpapers#thumbnail'
 
   root :to => 'wallpapers#index'
 
